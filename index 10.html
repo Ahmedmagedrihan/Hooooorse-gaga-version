@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Endless Horse Clone</title>
+  <style>
+    body {
+      font-family: monospace;
+      margin: 0;
+      padding: 0;
+      background-color: white;
+    }
+    .horse {
+      font-size: 20px;
+      line-height: 1;
+    }
+    .legs {
+      display: block;
+      white-space: pre;
+    }
+  </style>
+</head>
+<body>
+  <div class="horse">
+    <pre>
+        ,_,
+       (o.o)
+       <| |>
+        || || 
+    </pre>
+  </div>
+  <div id="legs" class="legs"></div>
+
+  <script>
+    // Generates endless horse legs as you scroll
+    const legsContainer = document.getElementById('legs');
+    
+    function addLegs() {
+      for (let i = 0; i < 100; i++) {
+        let legRow = document.createElement('div');
+        legRow.textContent = '|| ||';
+        legsContainer.appendChild(legRow);
+      }
+    }
+    
+    // Keep adding legs as you scroll down
+    window.addEventListener('scroll', () => {
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        addLegs();
+      }
+    });
+
+    // Initial legs
+    addLegs();
+  </script>
+</body>
+</html>
